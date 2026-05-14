@@ -1,0 +1,285 @@
+<script>
+
+let total = 0;
+
+const data = {
+
+hooks:[
+
+"Personne ne parle encore de cette méthode secrète.",
+"Cette stratégie peut changer ton futur.",
+"99% des gens ignorent cette opportunité.",
+"Tu peux commencer avec seulement un téléphone.",
+"Pourquoi certaines personnes deviennent riches plus vite.",
+"Le business le plus sous-estimé de 2026.",
+"Cette habitude détruit ton potentiel.",
+"Tu perds du temps si tu ignores ça.",
+"Le système que les créateurs utilisent pour devenir viraux.",
+"Voici comment certaines personnes gagnent de l’argent en dormant.",
+"Tu n’as pas besoin d’être riche pour commencer.",
+"Les gens intelligents font ça différemment.",
+"Le secret psychologique que personne n’explique.",
+"Tu regardes peut-être ta prochaine opportunité.",
+"Cette idée peut devenir énorme.",
+"Tu peux lancer ça gratuitement aujourd’hui.",
+"Pourquoi les gens silencieux gagnent souvent.",
+"Tu fais probablement cette erreur sans le savoir.",
+"Voici la méthode utilisée par les créateurs viraux.",
+"Le futur appartient à ceux qui créent maintenant."
+
+],
+
+business:[
+
+"Créer une agence TikTok IA.",
+"Lancer une chaîne Shorts automatisée.",
+"Créer un générateur IA.",
+"Créer une boutique de produits viraux.",
+"Monter une agence de montage vidéo.",
+"Créer une newsletter business.",
+"Vendre des prompts IA premium.",
+"Créer une marque TikTok anonyme.",
+"Créer un outil SaaS gratuit.",
+"Créer une plateforme de bio links.",
+"Lancer une app motivation.",
+"Créer un générateur de scripts TikTok.",
+"Créer une chaîne YouTube automatisée.",
+"Créer un business de mini ebooks.",
+"Vendre des templates Canva.",
+"Créer une IA de captions.",
+"Créer un site de citations virales.",
+"Créer une plateforme de freelancing.",
+"Créer une boutique print-on-demand.",
+"Créer une IA de thumbnails."
+
+],
+
+bio:[
+
+"Future millionaire building in silence.",
+"Dream big. Move smart.",
+"Young entrepreneur.",
+"Creating my empire.",
+"Focused on success.",
+"Discipline beats motivation.",
+"Building the future.",
+"Silent moves only.",
+"Powered by ambition.",
+"Mindset creates reality.",
+"Working while others sleep.",
+"Chasing greatness.",
+"Future CEO.",
+"Creating my own path.",
+"Success is my lifestyle."
+
+],
+
+motivation:[
+
+"Le succès aime la discipline.",
+"Travaille pendant que les autres dorment.",
+"La constance bat le talent.",
+"Ton futur dépend de toi.",
+"Ne t’arrête jamais.",
+"Chaque jour est une nouvelle opportunité.",
+"Ton mental crée ta réalité.",
+"Les grands rêves demandent du courage.",
+"Le travail silencieux produit des résultats bruyants.",
+"Tu es plus proche que tu ne le penses.",
+"Le futur récompense les courageux.",
+"Commence avant d’être prêt.",
+"Les excuses ne créent pas le succès.",
+"Tu peux devenir incroyable avec le temps.",
+"Les gagnants continuent même fatigués."
+
+],
+
+captions:[
+
+"POV: tu découvres enfin comment réussir.",
+"Le futur appartient aux créateurs.",
+"Cette idée peut devenir énorme.",
+"Personne n’est prêt pour ça.",
+"Commence maintenant.",
+"Tu regardes peut-être une idée millionnaire.",
+"Le monde change rapidement.",
+"Imagine ignorer cette opportunité.",
+"Les gens vont regretter de ne pas avoir commencé.",
+"Le business en ligne devient fou.",
+"Cette tendance explose actuellement.",
+"Le timing parfait n’existe pas.",
+"Le plus difficile est de commencer.",
+"Ce système devient viral partout.",
+"Tu peux lancer ça aujourd’hui."
+
+],
+
+money:[
+
+"Créer un outil IA viral.",
+"Monter une agence de montage Shorts.",
+"Créer une page motivation automatisée.",
+"Créer un business TikTok anonyme.",
+"Créer une IA de hooks.",
+"Vendre des ebooks numériques.",
+"Créer un SaaS sans coder.",
+"Créer une marque personnelle.",
+"Monétiser une audience TikTok.",
+"Créer une plateforme d’outils IA.",
+"Créer une app mobile simple.",
+"Créer un business de contenu.",
+"Créer une IA de bios Instagram.",
+"Créer un site de génération virale.",
+"Créer un business automatisé."
+
+],
+
+features:[
+
+"⚡ AI Content → Génère du contenu viral instantanément.",
+"📈 Growth → Développe ton audience et ton business.",
+"🌍 Global → Accessible partout dans le monde.",
+"💸 Monetization → Transforme ton trafic en argent.",
+"🚀 Startup Ready → Construit comme une vraie startup moderne.",
+"🧠 Smart AI → Inspiré par les plateformes IA modernes.",
+"📱 Mobile First → Fonctionne parfaitement sur téléphone.",
+"🔥 Viral Engine → Pensé pour les réseaux sociaux."
+
+]
+
+};
+
+function getRandom(type){
+
+const array = data[type];
+
+return array[Math.floor(Math.random()*array.length)];
+
+}
+
+function generate(type){
+
+const text = getRandom(type);
+
+document.getElementById("result").innerHTML = `
+
+<div style="
+animation:fade 0.4s;
+width:100%;
+">
+
+<div style="
+font-size:14px;
+color:#00ff99;
+margin-bottom:15px;
+font-weight:bold;
+letter-spacing:1px;
+">
+AI GENERATED
+</div>
+
+<div>
+${text}
+</div>
+
+</div>
+
+`;
+
+total++;
+
+document.getElementById("counter").innerHTML = total;
+
+}
+
+function generateRandom(){
+
+const keys = Object.keys(data);
+
+const filtered =
+keys.filter(k => k !== "features");
+
+const randomKey =
+filtered[Math.floor(Math.random()*filtered.length)];
+
+generate(randomKey);
+
+}
+
+function copyText(){
+
+const text =
+document.getElementById("result").innerText;
+
+navigator.clipboard.writeText(text);
+
+alert("Texte copié 🚀");
+
+}
+
+function shareText(){
+
+const text =
+document.getElementById("result").innerText;
+
+if(navigator.share){
+
+navigator.share({
+title:"ViralAI",
+text:text
+});
+
+}else{
+
+alert("Partage non supporté.");
+
+}
+
+}
+
+function scrollToGenerator(){
+
+document.getElementById("generator")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+document.querySelectorAll(".feature").forEach((card,index)=>{
+
+card.addEventListener("click",()=>{
+
+const randomFeature =
+getRandom("features");
+
+document.getElementById("result").innerHTML = `
+
+<div style="
+animation:fade 0.4s;
+width:100%;
+">
+
+<div style="
+font-size:14px;
+color:#00ff99;
+margin-bottom:15px;
+font-weight:bold;
+letter-spacing:1px;
+">
+STARTUP FEATURE
+</div>
+
+<div>
+${randomFeature}
+</div>
+
+</div>
+
+`;
+
+});
+
+});
+
+</script>
